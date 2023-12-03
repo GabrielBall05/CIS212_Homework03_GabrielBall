@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register For Click Counter</title>
+        <script src="script.js"></script>
+
+            <!-- EVERYTHING FOR PHP -->
+    <?php
+        //Variables
+        $servername = "localhost";
+        $db_username = "gball";
+        $db_password = "password";
+        $db_name = "ClickCounterDB";
+        $users_table = "users";
+        $scores_table = "scores";
+
+        $connection = new mysqli($servername, $db_username, $db_password, $db_name);
+
+        if ($connection->connect_error)
+        {
+            die("connection failed: " . $connection->connect_error);
+        }
+        else {/*echo "<h1> GOOD CONNECTION </h1>";*/}
+
+        if (isset($_POST['registerBtn']))
+        {
+            
+        }
+
+    ?>
+    </head>
+    <body>
+        <div id="registerBox">
+        <form method="post">
+            <h1 id="registerH1">Register</h1>
+            <p>First Name</p>
+            <input id="firstname" name="firstname" type="text">
+            <p>Last Name</p>
+            <input id="lastname" name="lastname" type="text">
+            <p>Username</p>
+            <input id="username" name="username" type="text">
+            <p>Password</p>
+            <input id="password" name="password" type="text">
+            <button name="registerBtn" id="registerBtn">Register</button>
+            <p>Already have an account? <a href="index.php">Login here!</a></p>
+        </form>
+        </div>
+    </body>
+</html>
