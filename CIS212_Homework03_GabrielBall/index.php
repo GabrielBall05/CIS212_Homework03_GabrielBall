@@ -6,7 +6,6 @@
     <title>Login To Click Counter</title>
     <script src="script.js"></script>
 
-    <!-- EVERYTHING FOR PHP -->
     <?php
         //Variables
         $servername = "localhost";
