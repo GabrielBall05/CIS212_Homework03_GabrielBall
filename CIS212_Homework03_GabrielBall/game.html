@@ -7,11 +7,21 @@
         <script src="script.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body >
-        <button onclick="test()">click me</button>
+    <body onload="display()">
         <h1 id="yourScore">Click as fast as you can inside the box</h1>
-        <button id="gameWindow">Click me</button>
-        <h2 id="numOfClicks">Clicks: </h2>
+        <button id="gameWindow" onclick="clicked()">Click me</button>
+        <div class="timeAndClicksDisplay">
+            <div class="timeAndClicksDisplay">
+                <h2>Clicks:&nbsp;</h2>
+                <h2 id="numOfClicks">0</h2>
+            </div>
+            <div class="timeAndClicksDisplay">
+                <h2>Time Left:&nbsp;</h2>
+                <h2 id="timeLeft">5</h2>
+            </div>
+        </div>
+
+        
         
     </body>
 </html>

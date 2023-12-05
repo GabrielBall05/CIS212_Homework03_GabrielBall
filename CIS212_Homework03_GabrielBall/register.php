@@ -46,10 +46,6 @@
                 //LOGIN
                 header('location: game.html');
             }
-
-
-            $sql = "INSERT INTO " . $users_table . " VALUES('" . $uname . "','" . $fname . "','" . $lname . "','" . $password . "');";
-            $connection->query($sql);
         }
 
     ?>

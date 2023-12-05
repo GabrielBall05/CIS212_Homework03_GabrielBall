@@ -39,16 +39,21 @@
                 {
                     $unameResult = $row['username'];
                     $passwordResult = $row['password'];
+                    $fnameResult = $row['firstname'];
+                    $lnameResult = $row['lastname'];
                 }
 
                 //CHECK PASSWORD
                 if ($passwordResult == $password)
                 {
-                    //LOGIN
-                    echo "<script>sessionStorage.setItem('userUname', JSON.stringify(" . $row['username'] . "));</script>";
-                    echo "<script>sessionStorage.setItem('userPassword', JSON.stringify(" . $row['password'] . "));</script>";
-                    echo "<script>sessionStorage.setItem('userFname', JSON.stringify(" . $row['firstname'] . "));</script>";
-                    echo "<script>sessionStorage.setItem('userLname', JSON.stringify(" . $row['lastname'] . "));</script>";
+                    //Set session storage variables
+                    echo "<script>
+                            sessionStorage.setItem('userUname', JSON.stringify('" . $unameResult . "'));
+                            sessionStorage.setItem('userPassword', JSON.stringify('" . $passwordResult . "'));
+                            sessionStorage.setItem('userFname', JSON.stringify('" . $fnameResult . "'));
+                            sessionStorage.setItem('userLname', JSON.stringify('" . $lnameResult . "'));
+                         </script>";
+                    //Go to game
                     echo "<script>window.location.href = 'game.html';</script>";
                     //header('location: game.html');
                 }
@@ -87,7 +92,7 @@
             <p>Password</p>
             <input id="password" name="password" type="text" value="<?php echo $password; ?>">
             <br>
-            <button name="loginBtn" id="loginBtn" onclick="clearTextBoxes()">Log in</button>
+            <button name="loginBtn" id="loginBtn">Log in</button>
         </form>
 
         <p>Don't have an account? <a href="register.php">Sign up here!</a></p>
