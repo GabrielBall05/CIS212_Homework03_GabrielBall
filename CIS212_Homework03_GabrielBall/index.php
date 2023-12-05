@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login To Click Counter</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 
     <?php
         //Variables
@@ -24,68 +25,71 @@
         else {/*echo "<h1> GOOD CONNECTION </h1>";*/}
 
 
+        if (isset($_POST['loginBtn']))
+        {
+            $uname = $_POST['username'];
+            $password = $_POST['password'];
 
-    ?>
-
-    </head>
-    <body onload="fillTextBoxes()">
-        <div id="loginBox">
-        <form method="post">
-            <h1 id="loginH1">Login</h1>
-            <p>Username</p>
-            <input id="username" name="username" type="text">
-            <p>Password</p>
-            <input id="password" name="password" type="text">
-            <br>
-            <button name="loginBtn" id="loginBtn" onclick="clearTextBoxes()">Log in</button>
-        </form>
-        <?php
-            if (isset($_POST['loginBtn']))
+            $sql = "SELECT * FROM " . $users_table . " WHERE username = '" . $uname . "';";
+            $results = $connection->query($sql);
+            
+            if ($results->num_rows > 0)
             {
-                $uname = $_POST['username'];
-                $password = $_POST['password'];
-
-                $sql = "SELECT * FROM " . $users_table . " WHERE username = '" . $uname . "';";
-                $results = $connection->query($sql);
-                
-
-                if ($results->num_rows > 0)
+                while($row = $results->fetch_assoc())
                 {
-                    while($row = $results->fetch_assoc())
-                    {
-                        $unameResult = $row['username'];
-                        $passwordResult = $row['password'];
-                    }
+                    $unameResult = $row['username'];
+                    $passwordResult = $row['password'];
+                }
 
-                    //CHECK PASSWORD
-                    if ($passwordResult == $password)
-                    {
-                        //LOGIN
-                        header('location: game.html');
-                    }
-                    else
-                    {
-                        echo "<p class='notExist'>Invalid login. Check your email and password again.</p>";
-                    }
+                //CHECK PASSWORD
+                if ($passwordResult == $password)
+                {
+                    //LOGIN
+                    echo "<script>sessionStorage.setItem('userUname', JSON.stringify(" . $row['username'] . "));</script>";
+                    echo "<script>sessionStorage.setItem('userPassword', JSON.stringify(" . $row['password'] . "));</script>";
+                    echo "<script>sessionStorage.setItem('userFname', JSON.stringify(" . $row['firstname'] . "));</script>";
+                    echo "<script>sessionStorage.setItem('userLname', JSON.stringify(" . $row['lastname'] . "));</script>";
+                    echo "<script>window.location.href = 'game.html';</script>";
+                    //header('location: game.html');
                 }
                 else
                 {
                     echo "<p class='notExist'>Invalid login. Check your email and password again.</p>";
                 }
-
-                //FOR TESTING
-                //  $uname = $_POST['username'];
-                //  $sql = "SELECT * FROM " . $users_table . ";";
-                //  $results = $connection->query($sql);
-                //  if ($results->num_rows > 0)
-                //  {
-                //     while ($row = $results->fetch_assoc())
-                //     {
-                //         echo "<p>" . $row['username'] . "," . $row['password'] . "," . $row['firstname'] . "</p>";
-                //     }
-                //  }
             }
-        ?>
+            else
+            {
+                echo "<p class='notExist'>Invalid login. Check your email and password again.</p>";
+            }
+
+            //FOR TESTING
+            //  $uname = $_POST['username'];
+            //  $sql = "SELECT * FROM " . $users_table . ";";
+            //  $results = $connection->query($sql);
+            //  if ($results->num_rows > 0)
+            //  {
+            //     while ($row = $results->fetch_assoc())
+            //     {
+            //         echo "<p>" . $row['username'] . "," . $row['password'] . "," . $row['firstname'] . "</p>";
+            //     }
+            //  }
+        }
+
+    ?>
+
+    </head>
+    <body>
+        <div id="loginBox">
+        <form method="post">
+            <h1 id="loginH1">Login</h1>
+            <p>Username</p>
+            <input id="username" name="username" type="text" value="<?php echo $uname; ?>">
+            <p>Password</p>
+            <input id="password" name="password" type="text" value="<?php echo $password; ?>">
+            <br>
+            <button name="loginBtn" id="loginBtn" onclick="clearTextBoxes()">Log in</button>
+        </form>
+
         <p>Don't have an account? <a href="register.php">Sign up here!</a></p>
         </div>
 

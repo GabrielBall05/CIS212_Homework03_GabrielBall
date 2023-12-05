@@ -1,13 +1,11 @@
-function clearTextBoxes()
+function display()
 {
-    document.getElementById("username").innerHTML = "";
-    document.getElementById("password").innerHTML = "";
+    var uname = JSON.parse(sessionStorage.getItem("userUname"));
+    console.log("USERNAME " + uname);
+    alert(uname);
 }
 
-function fillTextBoxes()
+function test()
 {
-    var curUname = document.getElementById("username").innerText;
-    var curPass = document.getElementById("password").innerText;
-    sessionStorage.setItem("curUname", JSON.stringify(curUname));
-    sessionStorage.setItem("curPass", JSON.stringify(curPass));
+    alert("test");
 }
