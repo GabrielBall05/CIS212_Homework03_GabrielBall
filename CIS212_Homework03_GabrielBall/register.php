@@ -46,6 +46,34 @@
             <button name="registerBtn" id="registerBtn">Register</button>
             <p>Already have an account? <a href="index.php">Login here!</a></p>
         </form>
+        <?php
+            if (isset($_POST['registerBtn']))
+            {
+                $fname = $_POST['firstname'];
+                $lname = $_POST['lastname'];
+                $uname = $_POST['username'];
+                $password = $_POST['password'];
+
+                $sql = "SELECT * FROM " . $users_table . " WHERE username = '" . $uname . "';";
+
+                $results = $connection->query($sql);
+                if ($results->num_rows > 0)
+                {
+                    echo "<p class='alreadyExists'>This username already exists. Please choose another.</p>";
+                }
+                else
+                {
+                    $sql = "INSERT INTO " . $users_table . " VALUES('" . $uname . "','" . $fname . "','" . $lname . "','" . $password . "');";
+                    $connection->query($sql);
+                    //LOGIN
+                    header('location: game.html');
+                }
+
+
+                $sql = "INSERT INTO " . $users_table . " VALUES('" . $uname . "','" . $fname . "','" . $lname . "','" . $password . "');";
+                $connection->query($sql);
+            }
+        ?>
         </div>
     </body>
 </html>

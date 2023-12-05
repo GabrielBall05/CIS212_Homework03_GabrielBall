@@ -28,7 +28,7 @@
     ?>
 
     </head>
-    <body>
+    <body onload="fillTextBoxes()">
         <div id="loginBox">
         <form method="post">
             <h1 id="loginH1">Login</h1>
@@ -37,54 +37,58 @@
             <p>Password</p>
             <input id="password" name="password" type="text">
             <br>
-            <button name="loginBtn" id="loginBtn">Log in</button>
-            <button name="test" id="test">test</button>
-            <?php
-                if (isset($_POST['test']))
-                {
-                    $sql = "SELECT * FROM " . $users_table;
+            <button name="loginBtn" id="loginBtn" onclick="clearTextBoxes()">Log in</button>
+        </form>
+        <?php
+            if (isset($_POST['loginBtn']))
+            {
+                $uname = $_POST['username'];
+                $password = $_POST['password'];
 
-                    $results = $connection->query($sql);
-                    if ($results->num_rows > 0)
+                $sql = "SELECT * FROM " . $users_table . " WHERE username = '" . $uname . "';";
+                $results = $connection->query($sql);
+                
+
+                if ($results->num_rows > 0)
+                {
+                    while($row = $results->fetch_assoc())
                     {
-                        while ($row = $results->fetch_assoc())
-                        {
-                            echo "<p> " . $row['username'] . "     " . $row['firstname'] . "</p>";
-                        }
+                        $unameResult = $row['username'];
+                        $passwordResult = $row['password'];
                     }
-                }
 
-                if (isset($_POST['loginBtn']))
-                {
-                    $uname = $_POST['username'];
-                    $password = $_POST['password'];
-
-                    $sql = "SELECT * FROM " . $users_table . " WHERE username = " . $uname;
-                    $results = $connection->query($sql);
-                    
-                    
-
-                    if ($results->num_rows > 0)
+                    //CHECK PASSWORD
+                    if ($passwordResult == $password)
                     {
-                        while($row = $results->fetch_assoc())
-                        {
-                            $result = $row['username'];
-                        }
-
-                        echo "Account exists";
-
+                        //LOGIN
+                        header('location: game.html');
                     }
                     else
                     {
-                        echo "<p id='notExist'>There is no account with that username</p>";
+                        echo "<p class='notExist'>Invalid login. Check your email and password again.</p>";
                     }
                 }
-            ?>
-            <p>Don't have an account? <a href="register.php">Sign up here!</a></p>
-        </form>
+                else
+                {
+                    echo "<p class='notExist'>Invalid login. Check your email and password again.</p>";
+                }
+
+                //FOR TESTING
+                //  $uname = $_POST['username'];
+                //  $sql = "SELECT * FROM " . $users_table . ";";
+                //  $results = $connection->query($sql);
+                //  if ($results->num_rows > 0)
+                //  {
+                //     while ($row = $results->fetch_assoc())
+                //     {
+                //         echo "<p>" . $row['username'] . "," . $row['password'] . "," . $row['firstname'] . "</p>";
+                //     }
+                //  }
+            }
+        ?>
+        <p>Don't have an account? <a href="register.php">Sign up here!</a></p>
         </div>
 
-
-        
+   
     </body>
 </html>
