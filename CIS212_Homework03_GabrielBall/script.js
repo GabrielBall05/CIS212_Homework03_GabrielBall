@@ -32,11 +32,20 @@ function clicked()
                 document.getElementById("timeLeft").innerText = 0;
                 clearInterval(timer);
 
-                var cps = i/5;
+                var totalClicks = document.getElementById("numOfClicks").innerText;
+                var cps = totalClicks/5;
 
-                document.getElementById("yourScore").innerText = "In 5 seconds, you clicked " + i + " times, or " + cps + " clicks per second";
+                document.getElementById("yourScore").innerText = "In 5 seconds, you clicked " + totalClicks + " times, or " + cps + " clicks per second";
+                document.getElementById("gameWindow").disabled = true;
 
-                //PUT SCORES STUFF INTO SESSION STORAGE
+                var addBtn = document.getElementById("addRestartBtn");
+                var restartGameBtn = document.createElement("button");
+                restartGameBtn.setAttribute("id", "restartGameBtn");
+                restartGameBtn.setAttribute("onclick", 'restartGame()');
+                restartGameBtn.innerText = "Restart Game";
+                addBtn.appendChild(restartGameBtn);
+
+                //SAVE SCORES
             }
             else
             {
@@ -45,4 +54,14 @@ function clicked()
             }
         }, 1000);
     }
+}
+
+function restartGame()
+{
+    //RESTART
+    document.getElementById("gameWindow").disabled = false;
+    timerStarted = false;
+    document.getElementById("addRestartBtn").removeChild(document.getElementById("restartGameBtn"));
+    document.getElementById("timeLeft").innerText = 5;
+    document.getElementById("numOfClicks").innerText = 0;
 }
