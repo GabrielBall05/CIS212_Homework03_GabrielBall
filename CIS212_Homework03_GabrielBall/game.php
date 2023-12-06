@@ -25,18 +25,6 @@
         <form method="post"><button name="testBtn">test button</button></form>
         
         <?php
-
-            if (isset($_POST['testBtn']))
-            {
-                $totalClicks = "<script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>";
-                $cps = "<script>JSON.parse(sessionStorage.getItem('cps'));</script>";
-                $date = "<script>JSON.parse(sessionStorage.getItem('date'));</script>";
-                $username = "<script>JSON.parse(sessionStorage.getItem('userUname'));</script>";
-
-                echo $totalClicks . $date;
-            }
-
-
             //Variables
             $servername = "localhost";
             $db_username = "gball";
@@ -47,7 +35,20 @@
 
             $connection = new mysqli($servername, $db_username, $db_password, $db_name);
 
-            //$sql = "INSERT INTO "
+            
+
+            if (isset($_POST['testBtn']))
+            {
+                // $totalClicks = "<script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>";
+                // $cps = "<script>JSON.parse(sessionStorage.getItem('cps'));</script>";
+                // $date = "<script>JSON.parse(sessionStorage.getItem('date'));</script>";
+                // $username = "<script>JSON.parse(sessionStorage.getItem('userUname'));</script>";
+                echo "<script src='script.js'>JSON.parse(sessionStorage.getItem('totalClicks'));</script>";
+
+
+                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('<script>JSON.parse(sessionStorage.getItem('userUname'));</script>', <script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>, <script>JSON.parse(sessionStorage.getItem('cps'));</script>, <script>JSON.parse(sessionStorage.getItem('date'));</script>');";
+                echo $sql;
+            }
         ?>
 
 
