@@ -46,15 +46,15 @@
                 //CHECK PASSWORD
                 if ($passwordResult == $password)
                 {
-                    //Set session storage variables
+                    //Set session variables
                     echo "<script>
                             sessionStorage.setItem('userUname', JSON.stringify('" . $unameResult . "'));
                             sessionStorage.setItem('userPassword', JSON.stringify('" . $passwordResult . "'));
                             sessionStorage.setItem('userFname', JSON.stringify('" . $fnameResult . "'));
                             sessionStorage.setItem('userLname', JSON.stringify('" . $lnameResult . "'));
-                         </script>";
+                          </script>";
                     //Go to game
-                    echo "<script>window.location.href = 'game.html';</script>";
+                    echo "<script>window.location.href = 'game.php';</script>";
                     //header('location: game.html');
                 }
                 else

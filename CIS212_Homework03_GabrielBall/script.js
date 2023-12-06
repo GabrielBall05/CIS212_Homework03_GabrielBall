@@ -6,9 +6,10 @@ var lastname = JSON.parse(sessionStorage.getItem("userLname"));
 
 function testDisplay()
 {
+    //alert("test");
     //alert(uname);
     ///alert(password);
-    alert(firstname);
+    //alert(firstname);
     //alert(lastname);
 }
 
@@ -46,6 +47,12 @@ function clicked()
                 addBtn.appendChild(restartGameBtn);
 
                 //SAVE SCORES
+                var longDate = new Date();
+                var date = (longDate.getMonth() + 1) + "-" + longDate.getDate() + "-" + longDate.getFullYear();
+
+                sessionStorage.setItem("totalClicks", JSON.stringify(totalClicks));
+                sessionStorage.setItem("cps", JSON.stringify(cps));
+                sessionStorage.setItem("date", JSON.stringify(date));
             }
             else
             {

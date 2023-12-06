@@ -44,7 +44,16 @@
                 $sql = "INSERT INTO " . $users_table . " VALUES('" . $uname . "','" . $fname . "','" . $lname . "','" . $password . "');";
                 $connection->query($sql);
                 //LOGIN
-                header('location: game.html');
+                //Set session storage variables
+                echo "<script>
+                        sessionStorage.setItem('userUname', JSON.stringify('" . $uname . "'));
+                        sessionStorage.setItem('userPassword', JSON.stringify('" . $password . "'));
+                        sessionStorage.setItem('userFname', JSON.stringify('" . $fname . "'));
+                        sessionStorage.setItem('userLname', JSON.stringify('" . $lname . "'));
+                      </script>";
+                //Go to game
+                echo "<script>window.location.href = 'game.php';</script>";
+                //header('location: game.html');
             }
         }
 
