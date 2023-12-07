@@ -21,15 +21,16 @@
             </div>
             <div class="flexDisplay">
                 <h2>Clicks per second:&nbsp;</h2>
-                <form method="post"><h2 name="clicksPerSecond" id="clicksPerSecond"></h2></form>
+                <form method="post"><input type="text" name="clicksPerSecond" id="clicksPerSecond" value="<?php $cps ?>"></form>
             </div>
             <div class="flexDisplay">
                 <h2>Date Achieved:&nbsp;</h2>
-                <form method="post"><h2 name="dateAchieved" id="dateAchieved">date</h2></form>
+                <form method="post"><input type="text" name="dateAchieved" id="dateAchieved"></form>
             </div>
             <div class="flexDisplay">
                 <h2>Save for:&nbsp;</h2>
-                <form method="post"><h2 name="saveFor" id="saveFor">user</h2></form>
+                <!-- <form method="post"><h2 name="saveFor" id="saveFor">user</h2></form> -->
+                <form method="post"><input type="text" name="saveFor" id="saveFor">
             </div>
         </div>
         <div class="flexDisplay">
@@ -56,12 +57,13 @@
             if (isset($_POST['saveScoreBtn']))
             {
                 $uname = $_POST['saveFor'];
-                $totalClicks = $_POST['numOfClicks'];
+                // $totalClicks = $_POST['numOfClicks'];
                 $cps = $_POST['clicksPerSecond'];
                 $date = $_POST['dateAchieved'];
 
                 //$sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('<script>JSON.parse(sessionStorage.getItem('userUname'));</script>', <script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>, <script>JSON.parse(sessionStorage.getItem('cps'));</script>, <script>JSON.parse(sessionStorage.getItem('date'));</script>');";
-                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
+                //$sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
+                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', '" . $date . "');";
                 echo $sql;
             }
         ?>

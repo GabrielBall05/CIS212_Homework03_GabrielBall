@@ -12,8 +12,11 @@ function init()
     //alert(firstname);
     //alert(lastname);
 
+    var longDate = new Date();
+    var date = (longDate.getMonth() + 1) + "-" + longDate.getDate() + "-" + longDate.getFullYear();
+    document.getElementById("dateAchieved").value = date;
+    document.getElementById("saveFor").value = uname;
     document.getElementById("saveScoreBtn").disabled = true;
-    document.getElementById("saveFor").innerText = uname;
 }
 
 function clicked()
@@ -38,10 +41,10 @@ function clicked()
 
                 var totalClicks = document.getElementById("numOfClicks").innerText;
                 var cps = totalClicks/5;
-                document.getElementById("clicksPerSecond").innerText = cps;
+                document.getElementById("clicksPerSecond").value = cps;
                 var longDate = new Date();
                 var date = (longDate.getMonth() + 1) + "-" + longDate.getDate() + "-" + longDate.getFullYear();
-                document.getElementById("dateAchieved").innerText = date;
+                document.getElementById("dateAchieved").value = date;
 
                 document.getElementById("saveScoreBtn").disabled = false;
                 document.getElementById("gameWindow").disabled = true;
