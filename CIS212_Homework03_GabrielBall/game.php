@@ -6,41 +6,7 @@
         <title>Clicks Per Second Game</title>
         <script src="script.js"></script>
         <link rel="stylesheet" href="styles.css">
-    </head>
-    <body onload="init()">
-        <h1>Click as fast as you can inside the box</h1>
-        <button id="gameWindow" onclick="clicked()">Click me</button>
-        <div class="flexDisplay">
-            <div class="flexDisplay">
-                <h2>Time Left:&nbsp;</h2>
-                <form method="post"><h2 id="timeLeft">5</h2></form>
-            </div>
-            <div class="flexDisplay">
-                <h2>Clicks:&nbsp;</h2>
-                <form method="post"><h2 name="numOfClicks" id="numOfClicks">0</h2></form>
-            </div>
-            <div class="flexDisplay">
-                <h2>Clicks per second:&nbsp;</h2>
-                <form method="post"><input type="text" name="clicksPerSecond" id="clicksPerSecond" value="<?php $cps ?>"></form>
-            </div>
-            <div class="flexDisplay">
-                <h2>Date Achieved:&nbsp;</h2>
-                <form method="post"><input type="text" name="dateAchieved" id="dateAchieved"></form>
-            </div>
-            <div class="flexDisplay">
-                <h2>Save for:&nbsp;</h2>
-                <!-- <form method="post"><h2 name="saveFor" id="saveFor">user</h2></form> -->
-                <form method="post"><input type="text" name="saveFor" id="saveFor">
-            </div>
-        </div>
-        <div class="flexDisplay">
-            <form method="post"><button id="saveScoreBtn" name="saveScoreBtn">Save Score</button></form>
-            <button id="seeScores" name="seeScores" onclick="window.location.href = 'scores.php';">See Scores</button>
-            <div id="addRestartBtn"></div>
-        </div>
 
-
-        
         <?php
             //Variables
             $servername = "localhost";
@@ -52,22 +18,55 @@
 
             $connection = new mysqli($servername, $db_username, $db_password, $db_name);
 
-            
 
             if (isset($_POST['saveScoreBtn']))
             {
                 $uname = $_POST['saveFor'];
-                // $totalClicks = $_POST['numOfClicks'];
+                //$totalClicks = $_POST['numOfClicks'];
                 $cps = $_POST['clicksPerSecond'];
                 $date = $_POST['dateAchieved'];
 
                 //$sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('<script>JSON.parse(sessionStorage.getItem('userUname'));</script>', <script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>, <script>JSON.parse(sessionStorage.getItem('cps'));</script>, <script>JSON.parse(sessionStorage.getItem('date'));</script>');";
                 //$sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
-                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', '" . $date . "');";
+                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $cps . ", '" . $date . "');";
                 echo $sql;
             }
-        ?>
+        ?>    
 
 
+
+    </head>
+    <body onload="init()">
+        <h1>Click as fast as you can inside the box</h1>
+        <button id="gameWindow" onclick="clicked()">Click me</button>
+        <form method="post">
+        <div class="flexDisplay">
+            <div class="flexDisplay">
+                <h2>Time Left:&nbsp;</h2>
+                <h2 id="timeLeft">5</h2>
+            </div>
+            <div class="flexDisplay">
+                <h2>Clicks:&nbsp;</h2>
+                <h2 name="numOfClicks" id="numOfClicks">0</h2>
+            </div>
+            <div class="flexDisplay">
+                <h2>Clicks per second:&nbsp;</h2>
+                <input type="text" name="clicksPerSecond" id="clicksPerSecond">
+            </div>
+            <div class="flexDisplay">
+                <h2>Date Achieved:&nbsp;</h2>
+                <input type="text" name="dateAchieved" id="dateAchieved">
+            </div>
+            <div class="flexDisplay">
+                <h2>Save for:&nbsp;</h2>
+                <input type="text" name="saveFor" id="saveFor">
+            </div>
+        </div>
+        <div class="flexDisplay">
+            <button id="saveScoreBtn" name="saveScoreBtn">Save Score</button>
+            <button id="seeScores" name="seeScores" onclick="window.location.href = 'scores.php';">See Scores</button>
+            <div id="addRestartBtn"></div>
+        </div>
+    </form>
     </body>
 </html>

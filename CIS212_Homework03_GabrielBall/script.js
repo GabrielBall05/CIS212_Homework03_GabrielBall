@@ -3,19 +3,18 @@ var uname = JSON.parse(sessionStorage.getItem("userUname"));
 var password = JSON.parse(sessionStorage.getItem("userPassword"));
 var firstname = JSON.parse(sessionStorage.getItem("userFname"));
 var lastname = JSON.parse(sessionStorage.getItem("userLname"));
+var date = JSON.parse(sessionStorage.getItem("date"));
+var cps = JSON.parse(sessionStorage.getItem("cps"));
+var totalClicks = JSON.parse(sessionStorage.getItem("totalClicks"));
 
 function init()
 {
-    //alert("test");
-    //alert(uname);
-    ///alert(password);
-    //alert(firstname);
-    //alert(lastname);
-
-    var longDate = new Date();
-    var date = (longDate.getMonth() + 1) + "-" + longDate.getDate() + "-" + longDate.getFullYear();
+    document.getElementById("clicksPerSecond").value = cps;
     document.getElementById("dateAchieved").value = date;
     document.getElementById("saveFor").value = uname;
+
+    alert("hellO");
+
     document.getElementById("saveScoreBtn").disabled = true;
 }
 
@@ -55,6 +54,10 @@ function clicked()
                 restartGameBtn.setAttribute("onclick", 'restartGame()');
                 restartGameBtn.innerText = "Restart Game";
                 addBtn.appendChild(restartGameBtn);
+
+                sessionStorage.setItem("date", JSON.stringify(date));
+                sessionStorage.setItem("totalClicks", JSON.stringify(totalClicks));
+                sessionStorage.setItem("cps", JSON.stringify(cps));
             }
             else
             {
