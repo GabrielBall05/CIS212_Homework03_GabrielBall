@@ -29,7 +29,7 @@
                 $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
                 $connection->query($sql);
             }
-        ?>    
+        ?>
 
 
 
@@ -41,7 +41,7 @@
         <div class="flexDisplay">
             <div class="flexDisplay">
                 <h2>Time Left:&nbsp;</h2>
-                <h2 id="timeLeft">5</h2>
+                <input type="text" name="timeLeft" id="timeLeft" value="5">
             </div>
             <div class="flexDisplay">
                 <h2>Clicks:&nbsp;</h2>
@@ -49,7 +49,7 @@
             </div>
             <div class="flexDisplay">
                 <h2>Clicks per second:&nbsp;</h2>
-                <input type="text" name="clicksPerSecond" id="clicksPerSecond" value="0">
+                <input type="text" name="clicksPerSecond" id="clicksPerSecond">
             </div>
             <div class="flexDisplay">
                 <h2>Date Achieved:&nbsp;</h2>
@@ -61,9 +61,8 @@
             </div>
         </div>
         <div class="flexDisplay">
-            <button id="saveScoreBtn" name="saveScoreBtn">Save Score</button>
+            <button id="saveScoreBtn" name="saveScoreBtn">Save Score & Restart</button>
             <button id="seeScores" name="seeScores" onclick="window.location.href = 'scores.php';">See Scores</button>
-            <div id="addRestartBtn"></div>
         </div>
     </form>
     </body>

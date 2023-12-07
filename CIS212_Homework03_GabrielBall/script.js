@@ -9,7 +9,7 @@ var totalClicks = JSON.parse(sessionStorage.getItem("totalClicks"));
 
 function init()
 {
-    document.getElementById("clicksPerSecond").value = cps;
+    document.getElementById("clicksPerSecond").value = 0;
     document.getElementById("dateAchieved").value = date;
     document.getElementById("saveFor").value = uname;
 
@@ -27,13 +27,13 @@ function clicked()
     if (!timerStarted)
     {
         timerStarted = true;
-        var timeLeft = document.getElementById("timeLeft").innerText;
+        var timeLeft = document.getElementById("timeLeft").value;
         timeLeft = parseInt(timeLeft);
         var timer = setInterval(function()
         {
             if (timeLeft <= 1)
             {
-                document.getElementById("timeLeft").innerText = 0;
+                document.getElementById("timeLeft").value = 0;
                 clearInterval(timer);
 
                 var totalClicks = document.getElementById("numOfClicks").value;
@@ -46,13 +46,6 @@ function clicked()
                 document.getElementById("saveScoreBtn").disabled = false;
                 document.getElementById("gameWindow").disabled = true;
 
-                var addBtn = document.getElementById("addRestartBtn");
-                var restartGameBtn = document.createElement("button");
-                restartGameBtn.setAttribute("id", "restartGameBtn");
-                restartGameBtn.setAttribute("onclick", 'restartGame()');
-                restartGameBtn.innerText = "Restart Game";
-                addBtn.appendChild(restartGameBtn);
-
                 sessionStorage.setItem("date", JSON.stringify(date));
                 sessionStorage.setItem("totalClicks", JSON.stringify(totalClicks));
                 sessionStorage.setItem("cps", JSON.stringify(cps));
@@ -60,18 +53,18 @@ function clicked()
             else
             {
                 timeLeft -= 1;
-                document.getElementById("timeLeft").innerText = timeLeft;
+                document.getElementById("timeLeft").value = timeLeft;
             }
         }, 1000);
     }
 }
 
-function restartGame()
+function restartGame() //FUNCTION IS USELESS NOW
 {
     //RESTART
-    document.getElementById("gameWindow").disabled = false;
-    timerStarted = false;
-    document.getElementById("addRestartBtn").removeChild(document.getElementById("restartGameBtn"));
-    document.getElementById("timeLeft").innerText = 5;
-    document.getElementById("numOfClicks").value = 0;
+    // document.getElementById("gameWindow").disabled = false;
+    // timerStarted = false;
+    // document.getElementById("addRestartBtn").removeChild(document.getElementById("restartGameBtn"));
+    // document.getElementById("timeLeft").innerText = 5;
+    // document.getElementById("numOfClicks").value = 0;
 }
