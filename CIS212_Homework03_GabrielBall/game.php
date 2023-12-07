@@ -7,22 +7,38 @@
         <script src="script.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body onload="testDisplay()">
-        <h1 id="yourScore">Click as fast as you can inside the box</h1>
+    <body onload="init()">
+        <h1>Click as fast as you can inside the box</h1>
         <button id="gameWindow" onclick="clicked()">Click me</button>
-        <div class="timeAndClicksDisplay">
-            <div class="timeAndClicksDisplay">
-                <h2>Clicks:&nbsp;</h2>
-                <h2 id="numOfClicks">0</h2>
-            </div>
-            <div class="timeAndClicksDisplay">
+        <div class="flexDisplay">
+            <div class="flexDisplay">
                 <h2>Time Left:&nbsp;</h2>
-                <h2 id="timeLeft">5</h2>
+                <form method="post"><h2 id="timeLeft">5</h2></form>
+            </div>
+            <div class="flexDisplay">
+                <h2>Clicks:&nbsp;</h2>
+                <form method="post"><h2 name="numOfClicks" id="numOfClicks">0</h2></form>
+            </div>
+            <div class="flexDisplay">
+                <h2>Clicks per second:&nbsp;</h2>
+                <form method="post"><h2 name="clicksPerSecond" id="clicksPerSecond"></h2></form>
+            </div>
+            <div class="flexDisplay">
+                <h2>Date Achieved:&nbsp;</h2>
+                <form method="post"><h2 name="dateAchieved" id="dateAchieved">date</h2></form>
+            </div>
+            <div class="flexDisplay">
+                <h2>Save for:&nbsp;</h2>
+                <form method="post"><h2 name="saveFor" id="saveFor">user</h2></form>
             </div>
         </div>
-        <button id="seeScores" name="seeScores" onclick="window.location.href = 'scores.php';">See Scores</button>
-        <div id="addRestartBtn"></div>
-        <form method="post"><button name="testBtn">test button</button></form>
+        <div class="flexDisplay">
+            <form method="post"><button id="saveScoreBtn" name="saveScoreBtn">Save Score</button></form>
+            <button id="seeScores" name="seeScores" onclick="window.location.href = 'scores.php';">See Scores</button>
+            <div id="addRestartBtn"></div>
+        </div>
+
+
         
         <?php
             //Variables
@@ -37,16 +53,15 @@
 
             
 
-            if (isset($_POST['testBtn']))
+            if (isset($_POST['saveScoreBtn']))
             {
-                // $totalClicks = "<script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>";
-                // $cps = "<script>JSON.parse(sessionStorage.getItem('cps'));</script>";
-                // $date = "<script>JSON.parse(sessionStorage.getItem('date'));</script>";
-                // $username = "<script>JSON.parse(sessionStorage.getItem('userUname'));</script>";
-                echo "<script src='script.js'>JSON.parse(sessionStorage.getItem('totalClicks'));</script>";
+                $uname = $_POST['saveFor'];
+                $totalClicks = $_POST['numOfClicks'];
+                $cps = $_POST['clicksPerSecond'];
+                $date = $_POST['dateAchieved'];
 
-
-                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('<script>JSON.parse(sessionStorage.getItem('userUname'));</script>', <script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>, <script>JSON.parse(sessionStorage.getItem('cps'));</script>, <script>JSON.parse(sessionStorage.getItem('date'));</script>');";
+                //$sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('<script>JSON.parse(sessionStorage.getItem('userUname'));</script>', <script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>, <script>JSON.parse(sessionStorage.getItem('cps'));</script>, <script>JSON.parse(sessionStorage.getItem('date'));</script>');";
+                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
                 echo $sql;
             }
         ?>

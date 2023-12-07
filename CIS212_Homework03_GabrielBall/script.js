@@ -4,13 +4,16 @@ var password = JSON.parse(sessionStorage.getItem("userPassword"));
 var firstname = JSON.parse(sessionStorage.getItem("userFname"));
 var lastname = JSON.parse(sessionStorage.getItem("userLname"));
 
-function testDisplay()
+function init()
 {
     //alert("test");
     //alert(uname);
     ///alert(password);
     //alert(firstname);
     //alert(lastname);
+
+    document.getElementById("saveScoreBtn").disabled = true;
+    document.getElementById("saveFor").innerText = uname;
 }
 
 function clicked()
@@ -35,8 +38,12 @@ function clicked()
 
                 var totalClicks = document.getElementById("numOfClicks").innerText;
                 var cps = totalClicks/5;
+                document.getElementById("clicksPerSecond").innerText = cps;
+                var longDate = new Date();
+                var date = (longDate.getMonth() + 1) + "-" + longDate.getDate() + "-" + longDate.getFullYear();
+                document.getElementById("dateAchieved").innerText = date;
 
-                document.getElementById("yourScore").innerText = "In 5 seconds, you clicked " + totalClicks + " times, or " + cps + " clicks per second";
+                document.getElementById("saveScoreBtn").disabled = false;
                 document.getElementById("gameWindow").disabled = true;
 
                 var addBtn = document.getElementById("addRestartBtn");
@@ -45,14 +52,6 @@ function clicked()
                 restartGameBtn.setAttribute("onclick", 'restartGame()');
                 restartGameBtn.innerText = "Restart Game";
                 addBtn.appendChild(restartGameBtn);
-
-                //SAVE SCORES
-                var longDate = new Date();
-                var date = (longDate.getMonth() + 1) + "-" + longDate.getDate() + "-" + longDate.getFullYear();
-
-                sessionStorage.setItem("totalClicks", JSON.stringify(totalClicks));
-                sessionStorage.setItem("cps", JSON.stringify(cps));
-                sessionStorage.setItem("date", JSON.stringify(date));
             }
             else
             {
