@@ -13,18 +13,16 @@ function init()
     document.getElementById("dateAchieved").value = date;
     document.getElementById("saveFor").value = uname;
 
-    alert("hellO");
-
     document.getElementById("saveScoreBtn").disabled = true;
 }
 
 function clicked()
 {
     //Increase number of clicks & show
-    var i = document.getElementById("numOfClicks").innerText;
+    var i = document.getElementById("numOfClicks").value;
     i = parseInt(i);
     i++;
-    document.getElementById("numOfClicks").innerText = i;
+    document.getElementById("numOfClicks").value = i;
 
     if (!timerStarted)
     {
@@ -38,7 +36,7 @@ function clicked()
                 document.getElementById("timeLeft").innerText = 0;
                 clearInterval(timer);
 
-                var totalClicks = document.getElementById("numOfClicks").innerText;
+                var totalClicks = document.getElementById("numOfClicks").value;
                 var cps = totalClicks/5;
                 document.getElementById("clicksPerSecond").value = cps;
                 var longDate = new Date();
@@ -75,5 +73,5 @@ function restartGame()
     timerStarted = false;
     document.getElementById("addRestartBtn").removeChild(document.getElementById("restartGameBtn"));
     document.getElementById("timeLeft").innerText = 5;
-    document.getElementById("numOfClicks").innerText = 0;
+    document.getElementById("numOfClicks").value = 0;
 }

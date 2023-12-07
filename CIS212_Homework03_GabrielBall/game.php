@@ -22,14 +22,12 @@
             if (isset($_POST['saveScoreBtn']))
             {
                 $uname = $_POST['saveFor'];
-                //$totalClicks = $_POST['numOfClicks'];
+                $totalClicks = $_POST['numOfClicks'];
                 $cps = $_POST['clicksPerSecond'];
                 $date = $_POST['dateAchieved'];
 
-                //$sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('<script>JSON.parse(sessionStorage.getItem('userUname'));</script>', <script>JSON.parse(sessionStorage.getItem('totalClicks'));</script>, <script>JSON.parse(sessionStorage.getItem('cps'));</script>, <script>JSON.parse(sessionStorage.getItem('date'));</script>');";
-                //$sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
-                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $cps . ", '" . $date . "');";
-                echo $sql;
+                $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
+                $connection->query($sql);
             }
         ?>    
 
@@ -47,11 +45,11 @@
             </div>
             <div class="flexDisplay">
                 <h2>Clicks:&nbsp;</h2>
-                <h2 name="numOfClicks" id="numOfClicks">0</h2>
+                <input type="text" name="numOfClicks" id="numOfClicks" value="0">
             </div>
             <div class="flexDisplay">
                 <h2>Clicks per second:&nbsp;</h2>
-                <input type="text" name="clicksPerSecond" id="clicksPerSecond">
+                <input type="text" name="clicksPerSecond" id="clicksPerSecond" value="0">
             </div>
             <div class="flexDisplay">
                 <h2>Date Achieved:&nbsp;</h2>
