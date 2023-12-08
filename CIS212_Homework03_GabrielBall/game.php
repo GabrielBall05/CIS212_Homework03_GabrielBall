@@ -29,6 +29,12 @@
                 $sql = "INSERT INTO " . $scores_table . " (username, totalclicks, cps, date) VALUES('" . $uname . "', " . $totalClicks . ", " . $cps . ", '" . $date . "');";
                 $connection->query($sql);
             }
+
+            if (isset($_POST['seeScores']))
+            {
+                //echo "<script>window.location.href = 'scores.php';</script>";
+                header('location: scores.php');
+            }
         ?>
 
 
@@ -62,7 +68,7 @@
         </div>
         <div class="flexDisplay">
             <button id="saveScoreBtn" name="saveScoreBtn">Save Score & Restart</button>
-            <button id="seeScores" name="seeScores" onclick="window.location.href = 'scores.php';">See Scores</button>
+            <button id="seeScores" name="seeScores">See Scores</button>
         </div>
     </form>
     </body>

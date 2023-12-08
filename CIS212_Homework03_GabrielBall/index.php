@@ -66,18 +66,6 @@
             {
                 echo "<p class='notExist'>Invalid login. Check your email and password again.</p>";
             }
-
-            //FOR TESTING
-            //  $uname = $_POST['username'];
-            //  $sql = "SELECT * FROM " . $users_table . ";";
-            //  $results = $connection->query($sql);
-            //  if ($results->num_rows > 0)
-            //  {
-            //     while ($row = $results->fetch_assoc())
-            //     {
-            //         echo "<p>" . $row['username'] . "," . $row['password'] . "," . $row['firstname'] . "</p>";
-            //     }
-            //  }
         }
 
     ?>
