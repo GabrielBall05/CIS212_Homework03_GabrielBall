@@ -70,6 +70,6 @@
             <button id="saveScoreBtn" name="saveScoreBtn">Save Score & Restart</button>
             <button id="seeScores" name="seeScores">See Scores</button>
         </div>
-    </form>
+        </form>
     </body>
 </html>

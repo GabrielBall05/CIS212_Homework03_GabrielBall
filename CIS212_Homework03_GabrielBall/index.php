@@ -1,3 +1,8 @@
+<!--============================================== 
+    Name: Gabriel Ball
+    Date: 12-11-23
+    Desc: Clicks Per Second Game with Database
+===============================================-->
 <!DOCTYPE html>
 <html lang="en">
     <head>

@@ -68,3 +68,8 @@ function restartGame() //FUNCTION IS USELESS NOW
     // document.getElementById("timeLeft").innerText = 5;
     // document.getElementById("numOfClicks").value = 0;
 }
+
+function initScoresPage()
+{
+    document.getElementById("signedInAs").value = uname;
+}
