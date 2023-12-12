@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="script.js"></script>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body onload="initScoresPage()">
     <form method="post">
-        <div class="flexDisplay">
-            <h1 id="scoresH1">Scores</h1>
-            <p>Signed in as:&nbsp;</p><input type="text" name="signedInAs" id="signedInAs">
-            <p><a href="index.php">Log out</a></p>
+        <div class="flexDisplay" id="logoutButton">
+            <p><a href="index.php">Log out of:&nbsp;</a></p>
+            <input type="text" name="signedInAs" id="signedInAs">
         </div>
+        <h1 id="scoresH1">Scores</h1>
         <div class="flexDisplay">
-            <div class="radioButtons">
+            <div id="scoresButtonsTab">
                 <div>
                     <button class="scoresSelection" id="yourscores" name="yourscores">All Your Scores (by cps)</button>
                 </div>

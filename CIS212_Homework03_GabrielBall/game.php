@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Clicks Per Second Game</title>
         <script src="script.js"></script>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style.css">
 
         <?php
             //Variables

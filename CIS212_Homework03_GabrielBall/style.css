@@ -1,0 +1,107 @@
+.flexDisplay
+{
+    display: flex;
+}
+
+/*Login Page & Register Page*/
+#loginBox, #registerBox
+{
+    width: 50%;
+    margin: auto;
+    margin-top: 15%;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: aqua;
+    padding: 10px;
+    text-align: center;
+}
+#loginBtn, #registerBtn
+{
+    width: 50%;
+    height: 50px;
+    margin-top: 25px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: lightblue;
+    font-size: larger;
+    font-weight: bold;
+}
+.notExist, .alreadyExists
+{
+    color:red;
+    margin: 5px;
+    padding: 0;
+}
+
+
+/*Scores Header*/
+#signedInAs
+{
+    height: 20px;
+    width: initial;
+    border-style: none;
+    margin-top: 14px;
+    pointer-events: none;
+}
+#scoresH1
+{
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+    font-size: 36px;
+}
+#logoutButton
+{
+    height: 25px;
+    margin-top: 0px;
+}
+
+/*SCORES BUTTONS STUFF*/
+.scoresSelection
+{
+    width: 100%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-top: 10%;
+    background-color: aquamarine;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+#scoresButtonsTab
+{
+    width: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+/*TABLE STUFF*/
+.tableHeader
+{
+    font-weight: bold;
+    font-size: larger;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+td
+{
+    text-align: center;
+}
+
+tr:nth-child(even)
+{
+    background-color: lightgray;
+}
+
+table
+{
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    margin-top: 10%;
+}
