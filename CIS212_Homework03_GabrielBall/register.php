@@ -44,31 +44,37 @@
                     $uname = $_POST['username'];
                     $password = $_POST['password'];
 
-                    $sql = "SELECT * FROM " . $users_table . " WHERE username = '" . $uname . "';";
-
-                    $results = $connection->query($sql);
-                    if ($results->num_rows > 0)
+                    if ($fname == "" || $lname == "" || $uname == "" || $password == "")
                     {
-                        echo "<p class='alreadyExists'>This username already exists. Please choose another.</p>";
+                        echo "<p id='fillOut'>Please fill out all fields</p>";
                     }
                     else
                     {
-                        $sql = "INSERT INTO " . $users_table . " VALUES('" . $uname . "','" . $fname . "','" . $lname . "','" . $password . "');";
-                        $connection->query($sql);
-                        //LOGIN
-                        //Set session storage variables
-                        echo "<script>
-                                sessionStorage.setItem('userUname', JSON.stringify('" . $uname . "'));
-                                sessionStorage.setItem('userPassword', JSON.stringify('" . $password . "'));
-                                sessionStorage.setItem('userFname', JSON.stringify('" . $fname . "'));
-                                sessionStorage.setItem('userLname', JSON.stringify('" . $lname . "'));
-                            </script>";
-                        //Go to game
-                        echo "<script>window.location.href = 'game.php';</script>";
-                        //header('location: game.html');
+                        $sql = "SELECT * FROM " . $users_table . " WHERE username = '" . $uname . "';";
+
+                        $results = $connection->query($sql);
+                        if ($results->num_rows > 0)
+                        {
+                            echo "<p class='alreadyExists'>This username already exists. Please choose another.</p>";
+                        }
+                        else
+                        {
+                            $sql = "INSERT INTO " . $users_table . " VALUES('" . $uname . "','" . $fname . "','" . $lname . "','" . $password . "');";
+                            $connection->query($sql);
+                            //LOGIN
+                            //Set session storage variables
+                            echo "<script>
+                                    sessionStorage.setItem('userUname', JSON.stringify('" . $uname . "'));
+                                    sessionStorage.setItem('userPassword', JSON.stringify('" . $password . "'));
+                                    sessionStorage.setItem('userFname', JSON.stringify('" . $fname . "'));
+                                    sessionStorage.setItem('userLname', JSON.stringify('" . $lname . "'));
+                                </script>";
+                            //Go to game
+                            echo "<script>window.location.href = 'game.php';</script>";
+                            //header('location: game.html');
+                        }
                     }
                 }
-
             ?>
             <button name="registerBtn" id="registerBtn">Register</button>
             <p>Already have an account? <a href="index.php">Login here!</a></p>

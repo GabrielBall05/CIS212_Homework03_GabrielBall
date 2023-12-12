@@ -88,7 +88,5 @@
 
         <p>Don't have an account? <a href="register.php">Sign up here!</a></p>
         </div>
-
-   
     </body>
 </html>

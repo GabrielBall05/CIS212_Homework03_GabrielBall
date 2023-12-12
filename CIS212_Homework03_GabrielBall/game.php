@@ -37,36 +37,36 @@
             }
         ?>
 
-
-
     </head>
     <body onload="init()">
-        <h1>Click as fast as you can inside the box</h1>
-        <button id="gameWindow" onclick="clicked()">Click me</button>
+        <h1 id="gameH1">Click as fast as you can inside the box</h1>
+        <button id="gameWindow" onclick="clicked()">Click me!</button>
         <form method="post">
-        <div class="flexDisplay">
+        <div class="flexDisplay" id="clicksAndTime">
             <div class="flexDisplay">
                 <h2>Time Left:&nbsp;</h2>
-                <input type="text" name="timeLeft" id="timeLeft" value="5">
+                <input type="text" name="timeLeft" id="timeLeft" class="gameInputs" value="5">
             </div>
             <div class="flexDisplay">
                 <h2>Clicks:&nbsp;</h2>
-                <input type="text" name="numOfClicks" id="numOfClicks" value="0">
+                <input type="text" name="numOfClicks" id="numOfClicks" class="gameInputs" value="0">
             </div>
             <div class="flexDisplay">
                 <h2>Clicks per second:&nbsp;</h2>
-                <input type="text" name="clicksPerSecond" id="clicksPerSecond">
+                <input type="text" name="clicksPerSecond" id="clicksPerSecond" class="gameInputs">
             </div>
+        </div>
+        <div class="flexDisplay" id="dateAndUser">
             <div class="flexDisplay">
                 <h2>Date Achieved:&nbsp;</h2>
-                <input type="text" name="dateAchieved" id="dateAchieved">
+                <input type="text" name="dateAchieved" id="dateAchieved" class="gameInputs">
             </div>
             <div class="flexDisplay">
                 <h2>Save for:&nbsp;</h2>
-                <input type="text" name="saveFor" id="saveFor">
+                <input type="text" name="saveFor" id="saveFor" class="gameInputs">
             </div>
         </div>
-        <div class="flexDisplay">
+        <div class="flexDisplay" id="gameButtons">
             <button id="saveScoreBtn" name="saveScoreBtn">Save Score & Restart</button>
             <button id="seeScores" name="seeScores">See Scores</button>
         </div>
